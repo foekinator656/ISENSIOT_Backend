@@ -1,10 +1,10 @@
-package hsleiden.isensiot_backendv2;
+package hsleiden.isensiot_backend;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class IsensiotBackendV2ApplicationTests {
+class ApplicationTests {
 
     @Test
     void contextLoads() {
