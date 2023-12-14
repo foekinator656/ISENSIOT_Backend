@@ -34,5 +34,5 @@ build/
 
 ### Environment Variables ###
 .env
-**/src/resources/application.properties
-**/src/resources/application.yml
+**/src/main/resources/application.properties
+**/src/main/resources/application.yml
