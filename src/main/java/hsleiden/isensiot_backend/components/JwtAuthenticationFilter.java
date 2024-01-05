@@ -37,11 +37,11 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String authHeader = request.getHeader("Authorization");
         final String jwt;
         final String userEmail;
-
+        System.out.println(request.getServletPath());
         List<String> excludedEndpoints = List.of("/api/v1/auth/");
-
+        System.out.println(excludedEndpoints.get(0).contains(request.getServletPath()));
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            if (excludedEndpoints.contains(request.getServletPath())) {
+            if (request.getServletPath().contains("/api/v1/auth/")) {
                 filterChain.doFilter(request, response);
                 log.warn("Bypassing authorization");
                 return;
