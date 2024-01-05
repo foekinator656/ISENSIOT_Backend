@@ -41,11 +41,13 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         List<String> excludedEndpoints = List.of("/api/v1/auth/");
         System.out.println(excludedEndpoints.get(0).contains(request.getServletPath()));
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
-            if (request.getServletPath().contains("/api/v1/auth/")) {
-                filterChain.doFilter(request, response);
+            filterChain.doFilter(request, response);
+
+            if ( excludedEndpoints.stream().anyMatch(request.getServletPath()::startsWith) ) {
                 log.warn("Bypassing authorization");
                 return;
             } else {
+                log.info(authHeader.substring(7));
                 log.info("No token provided!");
                 throw new NoTokenException("No token provided!");
             }
