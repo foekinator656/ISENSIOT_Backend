@@ -1,9 +1,12 @@
 package hsleiden.isensiot_backend.controller;
 
+import hsleiden.isensiot_backend.models.dtos.FrituurDto;
+import hsleiden.isensiot_backend.models.mapstruct.FrituurMapper;
+import hsleiden.isensiot_backend.services.FrituurService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin
 @RestController

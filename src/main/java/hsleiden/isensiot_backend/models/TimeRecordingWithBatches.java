@@ -13,6 +13,7 @@ import java.io.Serializable;
 @AllArgsConstructor
 @NoArgsConstructor
 public class TimeRecordingWithBatches implements Serializable {
+
     private Long batchId;
     private int time;
 }

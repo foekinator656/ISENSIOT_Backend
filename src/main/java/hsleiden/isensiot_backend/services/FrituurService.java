@@ -14,5 +14,7 @@ import java.util.List;
 public class FrituurService {
     private final FrituurRepository frituurRepository;
 
-
+    public List<Frituur> getFrituursByLocationId(Long locationId){
+        return frituurRepository.findAllByLocationId(locationId);
+    }
 }
