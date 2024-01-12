@@ -1,7 +1,7 @@
 package hsleiden.isensiot_backend.components;
 
 import hsleiden.isensiot_backend.exceptions.NoTokenException;
-import hsleiden.isensiot_backend.services.config.JwtService;
+import hsleiden.isensiot_backend.components.config.JwtService;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,7 +39,8 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         final String userEmail;
 
         List<String> excludedEndpoints = List.of("/api/v1/auth/");
-
+        System.out.println(request);
+        System.out.println(response);
         if (authHeader == null || !authHeader.startsWith("Bearer ")) {
             filterChain.doFilter(request, response);
 

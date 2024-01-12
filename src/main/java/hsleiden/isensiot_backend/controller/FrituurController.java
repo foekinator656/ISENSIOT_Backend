@@ -13,4 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class FrituurController {
 
 
+    @GetMapping("/{locationId}")
+    public List<FrituurDto> getFrituursByLocationId(@PathVariable Long locationId) {
+        return frituurMapper.toDto(frituurService.getFrituursByLocationId(locationId));
+    }
 }

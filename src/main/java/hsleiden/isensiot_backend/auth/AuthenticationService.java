@@ -3,7 +3,7 @@ package hsleiden.isensiot_backend.auth;
 import hsleiden.isensiot_backend.models.User;
 import hsleiden.isensiot_backend.models.dtos.UserDTO;
 import hsleiden.isensiot_backend.repository.UserRepository;
-import hsleiden.isensiot_backend.services.config.JwtService;
+import hsleiden.isensiot_backend.components.config.JwtService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -37,7 +37,7 @@ public class AuthenticationService {
                     )
             );
         } catch (Exception e) {
-            throw new Exception();
+            throw e;
         }
 
         User user = userRepository.findByEmail(login.getEmail())

@@ -1,4 +1,4 @@
-package hsleiden.isensiot_backend.services.config;
+package hsleiden.isensiot_backend.components.config;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

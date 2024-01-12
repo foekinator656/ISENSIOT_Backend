@@ -20,10 +20,13 @@ public class Location {
     @Id
     private Long id;
     private String name;
-
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    private User userId;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "locations_users",
+            joinColumns = { @JoinColumn(name = "user_id") },
+            inverseJoinColumns = { @JoinColumn(name = "location_id") }
+    )
+    private List<User> users = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER)
+    private List<Frituur> frituurs;
 }

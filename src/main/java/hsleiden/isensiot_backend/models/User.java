@@ -27,11 +27,13 @@ public class User implements UserDetails {
     private String email;
     @Column(nullable = false)
     private String password;
-    @OneToMany
-    @JoinColumn(name = "location_ids")
-    @JsonIdentityReference(alwaysAsId = true)
-    @JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
-    private List<Location> locationIds;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(
+            name = "locations_users",
+            joinColumns = { @JoinColumn(name = "location_id") },
+            inverseJoinColumns = { @JoinColumn(name = "user_id") }
+    )
+    private List<Location> locations = new ArrayList<>();
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

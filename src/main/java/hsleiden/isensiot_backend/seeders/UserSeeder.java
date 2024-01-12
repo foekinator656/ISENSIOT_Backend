@@ -15,23 +15,20 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class UserSeeder implements CommandLineRunner {
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
-    @Value("${EMAILS}")
-    private List<String> emails;
-    @Value("${PASSWORDS}")
-    private List<String> passwords;
 
     private void createUser(String email, String password) {
+        Optional<User> existingUser = userRepository.findByEmail(email);
+
+        if (existingUser.isPresent()) {
+            return;
+        }
+
         User user = User.builder()
                 .email(email)
                 .password(passwordEncoder.encode(password))
                 .build();
 
-        Optional<User> existingUser = userRepository.findByEmail(user.getEmail());
-
-        if (existingUser.isEmpty()) {
-            userRepository.save(user);
-        }
+        userRepository.save(user);
     }
 
     private void runThroughList() {
