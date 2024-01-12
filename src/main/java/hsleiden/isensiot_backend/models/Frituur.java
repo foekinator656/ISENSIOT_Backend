@@ -8,16 +8,19 @@ import lombok.NoArgsConstructor;
 import jakarta.persistence.*;
 
 @Data
+@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "frituren")
 public class Frituur {
     @Id
+    @GeneratedValue
     private Long id;
     private int oilVolume;
     private int panCount;
     private int panVolume;
-    private Long locationId;
+    @ManyToOne
+    @JoinColumn(name = "location_id")
+    private Location location;
 }

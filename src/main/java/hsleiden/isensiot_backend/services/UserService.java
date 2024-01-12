@@ -20,9 +20,9 @@ public class UserService {
 
     public User getUser(String bearerToken) {
         String jwt = bearerToken.substring(7);
-
         String email = jwtService.extractUsername(jwt);
         log.info("Username/Email is: {}", email);
+
         return userRepository.findByEmail(email).orElseThrow(EntityNotFoundException::new);
     }
     public User getCurrentUser() {

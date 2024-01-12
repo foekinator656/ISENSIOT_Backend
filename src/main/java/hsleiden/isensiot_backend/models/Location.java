@@ -1,8 +1,5 @@
 package hsleiden.isensiot_backend.models;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIdentityReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -10,14 +7,18 @@ import lombok.NoArgsConstructor;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Data
 @Builder
+@Entity
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
 @Table(name = "locations")
 public class Location {
     @Id
+    @GeneratedValue
     private Long id;
     private String name;
     @ManyToMany(fetch = FetchType.EAGER)
