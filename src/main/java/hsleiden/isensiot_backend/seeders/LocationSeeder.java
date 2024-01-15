@@ -34,8 +34,7 @@ public class LocationSeeder implements CommandLineRunner {
     }
 
     private void createLocations() {
-        for (int i = 0; i < 5; i++) {
-
+        for (int i = 0; i < 3; i++) {
             createLocation("test" + i);
         }
     }

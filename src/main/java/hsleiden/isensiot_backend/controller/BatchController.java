@@ -1,6 +1,7 @@
 package hsleiden.isensiot_backend.controller;
 
 import hsleiden.isensiot_backend.models.Batch;
+import hsleiden.isensiot_backend.models.TimeRecording;
 import hsleiden.isensiot_backend.services.BatchService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;

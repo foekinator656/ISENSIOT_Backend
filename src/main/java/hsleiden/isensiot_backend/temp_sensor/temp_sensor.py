@@ -3,19 +3,22 @@ import RPi.GPIO as GPIO
 import time
 import requests
 
-JWT = ""
-URL = ""
-BODY = {}
-HeadersGetToken = ""
+URL = "http://192.168.198.9:8080/api/v1/auth/login"
+BOD = {"email": "appeltaart@gmail.com", "password": "appeltaart"}
 
 
-def get_token():
-    r = requests.get(url=URL, body=BODY)
-    data = r.json()
-    print(data)
+r = requests.get(url=URL, json=BOD)
+data = r.json()
 
-# def postData:
-#
+
+JWT = data["token"]
+Headers = {"Authorization": "Bearer "+JWT}
+
+URL = "http://192.168.198.9:8080/api/v1/batch/5"
+r = requests.post(url=URL, json=BOD, headers=Headers)
+data = r.json()
+
+URL = "http://192.168.198.9:8080/api/v1/timerecording/"+str(data)+"/"
 
 class MAX6675(object):
     '''Python driver for [MAX6675 Cold-Junction Compensated Thermocouple-to-Digital Converter](http://www.adafruit.com/datasheets/MAX6675.pdf)
@@ -121,6 +124,7 @@ if __name__ == "__main__":
     clock_pin = 23
     data_pin = 22
     units = "c"
+    time = 0
     thermocouple = MAX6675(cs_pin, clock_pin, data_pin, units)
     running = True
     while(running):
@@ -128,6 +132,9 @@ if __name__ == "__main__":
             try:
                 tc = thermocouple.get()
                 print("tc =",tc)
+                BODY = {"temperature": tc, "colour": "Yellow", "viscosity": 44}
+                time+= 1
+                r = requests.post(url=URL+str(time), json=BODY, headers=Headers)
             except MAX6675Error as e:
                 tc = "Error: "+ e.value
                 running = False

@@ -15,7 +15,7 @@ import jakarta.persistence.*;
 @Table(name = "batches")
 public class Batch {
     @Id
+    @GeneratedValue
     private Long id;
     private Long frituurId;
-    private int typeFrituur;
 }

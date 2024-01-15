@@ -17,4 +17,10 @@ public class BatchService {
     public List<Batch> getBatchesByFrituurId(Long frituurId) {
         return batchRepository.findAllByFrituurId(frituurId);
     }
+
+    public long createBatch(Long frituurdId){
+        Batch batch = Batch.builder().frituurId(frituurdId).build();
+        batchRepository.save(batch);
+        return batch.getId();
+    }
 }

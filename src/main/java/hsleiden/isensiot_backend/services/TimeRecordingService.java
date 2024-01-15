@@ -8,6 +8,8 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Slf4j
 @Service
 @AllArgsConstructor
@@ -25,4 +27,9 @@ public class TimeRecordingService {
         log.info("Recording that has been made is: {}", recording);
         timeRecordingRepository.save(recording);
     }
+
+    public List<TimeRecording> getAllTimeRecordingsByBatch(long batchID){
+        return timeRecordingRepository.findAllByBatchId(batchID);
+    }
+
 }

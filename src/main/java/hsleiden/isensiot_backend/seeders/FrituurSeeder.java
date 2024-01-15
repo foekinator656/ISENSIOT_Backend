@@ -35,7 +35,7 @@ public class FrituurSeeder implements CommandLineRunner {
         int panVolume = 4;
 
         if (location.getFrituurs().size() < 5) {
-            for (int i = 1; i < 6; i++) {
+            for (int i = 1; i < 3; i++) {
                 createFrituur(oilVolume * i, panCount * i, panVolume * i, location);
             }
         }
@@ -46,7 +46,7 @@ public class FrituurSeeder implements CommandLineRunner {
         log.info("Starting with creating frituurs for locations.");
 
         locationRepository.findAll().forEach(location -> {
-            if (location.getFrituurs().isEmpty() || location.getFrituurs().size() < 5) {
+            if (location.getFrituurs().isEmpty() || location.getFrituurs().size() < 2) {
                 createMultipleFrituursForLocation(location);
             }
         });
