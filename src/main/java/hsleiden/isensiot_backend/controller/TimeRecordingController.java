@@ -3,6 +3,7 @@ package hsleiden.isensiot_backend.controller;
 import hsleiden.isensiot_backend.models.dtos.TimeRecordingDTO;
 import hsleiden.isensiot_backend.services.TimeRecordingService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin

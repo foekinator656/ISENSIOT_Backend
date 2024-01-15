@@ -18,4 +18,10 @@ public class BatchController {
     public List<Batch> getAllBatchesByFrituurId(@PathVariable Long frituurId) {
         return batchService.getBatchesByFrituurId(frituurId);
     }
+
+    @PostMapping("/{frituurId}")
+    public long createBatch(@PathVariable Long frituurId) {
+        return batchService.createBatch(frituurId);
+    }
+
 }
