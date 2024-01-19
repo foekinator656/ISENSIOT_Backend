@@ -20,4 +20,12 @@ public class FrituurController {
     public List<FrituurDto> getFrituursByLocationId(@PathVariable Long locationId) {
         return frituurMapper.toDto(frituurService.getFrituursByLocationId(locationId));
     }
+
+    @PostMapping("/{frituurId}")
+    public void setFrituurIp(@PathVariable Long frituurId, @RequestBody
+                             String string){
+
+        string = string.substring(1, string.length()-1);
+        frituurService.setFrituurIp(frituurId, string);
+    }
 }

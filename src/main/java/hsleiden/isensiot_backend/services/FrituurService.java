@@ -17,4 +17,12 @@ public class FrituurService {
     public List<Frituur> getFrituursByLocationId(Long locationId){
         return frituurRepository.findAllByLocationId(locationId);
     }
+
+    public void setFrituurIp(Long frituurId, String string) {
+        Frituur frituur = frituurRepository.getReferenceById(frituurId);
+
+        frituur.setIpAddress(string);
+
+        frituurRepository.save(frituur);
+    }
 }

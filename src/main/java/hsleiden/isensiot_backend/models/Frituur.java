@@ -23,4 +23,6 @@ public class Frituur {
     @ManyToOne
     @JoinColumn(name = "location_id")
     private Location location;
+    private String ipAddress;
+
 }
