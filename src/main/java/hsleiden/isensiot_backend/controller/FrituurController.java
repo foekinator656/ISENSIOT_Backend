@@ -28,4 +28,10 @@ public class FrituurController {
         string = string.substring(1, string.length()-1);
         frituurService.setFrituurIp(frituurId, string);
     }
+
+    @GetMapping("/getip/{frituurId}")
+    public String getFrituurIp(@PathVariable Long frituurId){
+        return this.frituurService.getFrituurIp(frituurId);
+    }
+
 }
