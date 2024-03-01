@@ -23,8 +23,6 @@ public class TimeRecordingController {
             @PathVariable int time,
             @RequestBody TimeRecordingDTO timeRecordingDTO
     ) {
-        log.info("hallo");
-        System.out.println("hallow");
         timeRecordingService.save(timeRecordingDTO, batchId, time);
     }
 

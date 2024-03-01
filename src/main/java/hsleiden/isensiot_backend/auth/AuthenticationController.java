@@ -23,7 +23,6 @@ public class AuthenticationController {
     public ResponseEntity<AuthenticationResponse> login(
             @RequestBody AuthenticationRequest authenticationRequest
     ) throws Exception {
-        System.out.println(authenticationRequest);
         return ResponseEntity.ok(authenticationService.login(authenticationRequest));
     }
 }
