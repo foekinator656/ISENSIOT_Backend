@@ -1,10 +1,12 @@
 package hsleiden.isensiot_backend.auth;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import hsleiden.isensiot_backend.models.dtos.UserDTO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+@SuppressFBWarnings({"RV_EXCEPTION_NOT_THROWN", "EI_EXPOSE_REP", "EI_EXPOSE_REP2"})
 @CrossOrigin
 @RestController
 @RequiredArgsConstructor
